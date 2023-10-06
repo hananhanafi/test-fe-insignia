@@ -3,33 +3,7 @@ import DocumentCard from './DocumentCard';
 import { FaArrowRight } from "react-icons/fa";
 
 const MobileDocuments = (props) => {
-    const DocumentList = [
-      {
-        title: "Mobile ui & ux guide 2013",
-        subTitle: "User interface designer",
-        views: "187687"
-      },
-      {
-        title: "HTML & CSS",
-        subTitle: "Frontend Development",
-        views: "18787"
-      },
-      {
-        title: "HTML & CSS",
-        subTitle: "Frontend Development",
-        views: "18787"
-      },
-      {
-        title: "HTML & CSS",
-        subTitle: "Frontend Development",
-        views: "18787"
-      },
-      {
-        title: "HTML & CSS",
-        subTitle: "Frontend Development",
-        views: "18787"
-      },
-    ]
+    const DocumentsList = props.list || []
     return (
         <div className='relative sm:hidden'>  
             <div className="">
@@ -38,16 +12,16 @@ const MobileDocuments = (props) => {
                         Documents
                     </div>
                     <div className='text-main-light text-right flex items-center justify-end'>
-                      Browse all <FaArrowRight className='ml-2'/>
+                        Browse all <FaArrowRight className='ml-2'/>
                     </div>
                 </div>
-                <div className='min-h-8 h-40 w-full'></div>
+                <div className='min-h-8 h-48 w-full'></div>
                 <div className='flex gap-2 absolute left-0 top-10 w-full overflow-y-scroll'>
                     {
-                        DocumentList.map((doc,i) => {
+                        DocumentsList.map((video,i) => {
                             return (
                                 <span key={i}>
-                                    <DocumentCard height="160px" minWidth="150px" title={doc.title} subTitle={doc.subTitle} views={doc.views} />
+                                    <DocumentCard height="160px" minWidth="150px" maxWidth="150px" title={video.message} subTitle={video.owner.firstName + ' ' + video.owner.lastName} views={video.likes || '100'} />
                                 </span>
                             )
                         })

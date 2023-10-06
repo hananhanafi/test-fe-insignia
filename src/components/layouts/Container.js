@@ -1,23 +1,18 @@
 import React from 'react';
 import Header from '../shared/headers/Header';
 import Footer from '../shared/footers/Footer';
+import useDocumentTitle from '../../helpers/useDocumentTitle';
 
 const Container = ({ children, title, header = <Header />, footer = <Footer /> }) => {
     let titleView;
     if (title !== null) {
-        titleView = process.env.title + ' | ' + title;
+        titleView = process.env.REACT_APP_TITLE + ' | ' + title;
     } else {
-        titleView = process.env.title + ' | ' + process.env.titleDescription;
+        titleView = process.env.REACT_APP_TITLE + ' | ' + process.env.REACT_APP_TITLE_DESCRIPTION;
     }
-
+    useDocumentTitle(titleView)
     return (
         <>
-            <header>
-                <title>{titleView}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="description" content="Blood Glucose Level Prediction" />
-                <link rel="icon" href="/bg-prediction-logo.svg" />
-            </header>
             <div className='relative bg-main'>
                 {header}
                 {children}
